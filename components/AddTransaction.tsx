@@ -9,7 +9,7 @@ import { Category, Transaction } from "../types";
 export default function AddTransaction({
   insertTransaction,
 }: {
-  insertTransaction(transaction: Transaction): Promise<void>;
+  insertTransaction(transaction: Omit<Transaction, "id">): Promise<void>;
 }) {
   const [isAddingTransaction, setIsAddingTransaction] =
     React.useState<boolean>(false);
@@ -38,15 +38,6 @@ export default function AddTransaction({
   }
 
   async function handleSave() {
-    console.log({
-      amount: Number(amount),
-      description,
-      category_id: categoryId,
-      date: new Date().getTime() / 1000,
-      type: category as "Expense" | "Income",
-    });
-
-    // @ts-ignore
     await insertTransaction({
       amount: Number(amount),
       description,
@@ -94,7 +85,6 @@ export default function AddTransaction({
             {categories.map((cat) => (
               <CategoryButton
                 key={cat.name}
-                // @ts-ignore
                 id={cat.id}
                 title={cat.name}
                 isSelected={typeSelected === cat.name}

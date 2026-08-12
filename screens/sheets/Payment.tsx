@@ -1,11 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import { BlurView } from "expo-blur";
 import {
-  Button,
-  Platform,
-  PlatformColor,
   Pressable,
-  ScrollView,
   Text,
   TouchableOpacity,
   View,

@@ -1,6 +1,6 @@
 import SegmentedControl from "@react-native-segmented-control/segmented-control";
 import * as React from "react";
-import { Text, TouchableOpacity, View, Platform } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import { BarChart, barDataItem } from "react-native-gifted-charts";
 import { useSQLiteContext } from "expo-sqlite";
 import { processWeeklyData } from "../queries/ChartQuery";
@@ -8,8 +8,6 @@ import { SymbolView } from "expo-symbols";
 
 enum Period {
   week = "week",
-  month = "month",
-  year = "year",
 }
 
 export default function SummaryChart() {
@@ -29,7 +27,6 @@ export default function SummaryChart() {
         const { startDate, endDate } = getWeekRange(currentDate);
         setCurrentEndDate(() => new Date(startDate));
         const data = await fetchWeeklyData(startDate, endDate, transactionType);
-        console.log("Data before process", data);
         setBarData(processWeeklyData(data, transactionType));
         setChartKey((prev) => prev + 1);
       }
@@ -88,7 +85,6 @@ export default function SummaryChart() {
         total: item.total,
       }));
 
-      console.log(formattedResult);
       return formattedResult;
     } catch (e) {
       console.error("Error fetching weekly data:", e);
@@ -98,21 +94,6 @@ export default function SummaryChart() {
 
   return (
     <View>
-      {/* <SegmentedControl
-        values={["Week", "Month", "Year"]}
-        style={{ marginBottom: 16 }}
-        selectedIndex={currentTab}
-        onChange={(event) => {
-          const index = event.nativeEvent.selectedSegmentIndex;
-          if (index === 0) {
-            setChartPeriod(Period.week);
-          } else if (index === 1) {
-            setChartPeriod(Period.month);
-          } else {
-            setChartPeriod(Period.year);
-          }
-        }}
-      /> */}
       <Text style={{ fontWeight: "700", fontSize: 18, marginBottom: 8 }}>
         {currentEndDate.toLocaleDateString("en-US", { month: "short" })}{" "}
         {currentEndDate.getDate()} -{" "}
@@ -135,8 +116,6 @@ export default function SummaryChart() {
         minHeight={3}
         barBorderRadius={3}
         showGradient
-        // frontColor={transactionType === "Expense" ? "#dc2626" : "#4f46e5"}
-        // gradientColor={transactionType === "Expense" ? "#ea580c" : "#7c3aed"}
         spacing={20}
         noOfSections={4}
         yAxisThickness={0}
@@ -146,16 +125,6 @@ export default function SummaryChart() {
         yAxisTextStyle={{ color: "gray" }}
         isAnimated
         animationDuration={300}
-        // rulesColor={"#00000020"}
-        // backgroundColor={"white"}
-        // showGradient
-        // gradientColor={"blue"}
-        // barInnerComponent={() => (
-        //   <View style={{ backgroundColor: "pink", height: "100%" }} />
-        // )}
-        // showLine
-        // dashGap={0}
-        // dashWidth={0}
       />
       <View
         style={{
