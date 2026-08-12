@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f2a34040-f1bb-4cb2-9291-2b40703f0494" name="Changes" comment="" />
+    <list default="true" id="f2a34040-f1bb-4cb2-9291-2b40703f0494" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,7 +20,7 @@
 }]]></component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
-    "url": "https://github.com/betomoedano/Budget-Buddy-App.git",
+    "url": "https://github.com/codey19/BudgetBuddy.git",
     "accountId": "9cc155c3-8571-4878-86f1-327fe185ccb1"
   }
 }]]></component>
